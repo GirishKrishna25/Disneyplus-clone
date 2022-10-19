@@ -119,9 +119,10 @@ const NavMenu = styled.div`
       line-height: 1.08;
       padding: 2px 0px;
       position: relative;
-    }
+      color: rgb(249, 249, 249);
+      white-space: nowrap;
 
-    &:before {
+      &:before {
         content: "";
         width: auto;
         height: 2px;
@@ -135,22 +136,24 @@ const NavMenu = styled.div`
         border-radius: 0px 0px 4px 4px;
 
         opacity: 0;
-        
+
         transform-origin: left center;
         transform: scaleX(0);
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
         visibility: hidden;
-    }
-  }
-  
-  &:hover {
-      span:before {
-        transform: scaleX(1);
-        opacity: 1 !important;
       }
     }
 
-@media (max-width: 768px) {
+    &:hover {
+      span:before {
+        transform: scaleX(1);
+        visibility: visible;
+        opacity: 1 !important;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
     display: none;
   }
 `;
