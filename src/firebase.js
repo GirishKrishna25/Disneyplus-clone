@@ -13,8 +13,10 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth(); // Authentication
-const provider = new firebase.auth.GoogleAuthProvider();
 const storage = firebase.storage();
+
+// when we try to login, Google provides differnet accounts of ours.
+const provider = new firebase.auth.GoogleAuthProvider();
 
 export { auth, provider, storage };
 export default db;
