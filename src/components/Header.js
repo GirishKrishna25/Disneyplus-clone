@@ -6,7 +6,7 @@ import { auth, provider } from "../firebase";
 // in simple terms, we are storing and retriving info. from store using this.
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import {
   selectUserName,
   selectUserPhoto,
@@ -19,6 +19,16 @@ export default function Header() {
   const history = useHistory();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+
+  // if user login, this function takes him to the home
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push("/home");
+      }
+    });
+  }, [userName]);
 
   const handleAuth = () => {
     if (!userName) {
